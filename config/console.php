@@ -3,15 +3,18 @@
 Yii::setAlias('@tests', dirname(__DIR__) . '/tests');
 
 $params = require(__DIR__ . '/params.php');
-$db = require(__DIR__ . '/db.php');
+$db = require(__DIR__ . '/local/db.php');
 
 return [
-    'id' => 'basic-console',
+    'id' => 'spacebox-test',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log', 'gii'],
     'controllerNamespace' => 'app\commands',
     'modules' => [
-        'gii' => 'yii\gii\Module',
+        'gii' => [
+            'class' => 'yii\gii\Module',
+            'allowedIPs' => ['192.168.10.1'],
+        ],
     ],
     'components' => [
         'cache' => [

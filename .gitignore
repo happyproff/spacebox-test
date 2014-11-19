@@ -25,3 +25,11 @@ composer.phar
 phpunit.phar
 # local phpunit config
 /phpunit.xml
+
+/config/local/db.php
+
+# hosting specified paths
+/log
+/logs
+/cgi-bin
+.htpasswd
