@@ -42,14 +42,20 @@ $config = [
 ];
 
 if (YII_ENV_DEV) {
-    // configuration adjustments for 'dev' environment
+
+    // if app running in dev env then let enable debug and gii
+    $allowed = [$_SERVER['REMOTE_ADDR']];
+
     $config['bootstrap'][] = 'debug';
-    $config['modules']['debug'] = 'yii\debug\Module';
+    $config['modules']['debug'] = [
+        'class' => 'yii\debug\Module',
+        'allowedIPs' => $allowed,
+    ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
-        'allowedIPs' => ['192.168.10.1'],
+        'allowedIPs' => $allowed,
     ];
 }
 
